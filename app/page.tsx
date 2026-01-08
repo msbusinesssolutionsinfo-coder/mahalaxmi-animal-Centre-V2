@@ -309,8 +309,7 @@ Please confirm this appointment.`;
             }
           ].map((review, i) => (
             <Card key={i} className="relative pt-10">
-              <div className="absolute -top-6 left-6 text-6xl text-blue-100 font-serif">"</div>
-              
+             <div className="absolute -top-6 left-6 text-6xl text-blue-100 font-serif">&quot;</div>
               {/* Dynamic Star Rating */}
               <div className="flex text-yellow-400 mb-4">
                 {[...Array(review.stars)].map((_, i) => (
@@ -319,7 +318,7 @@ Please confirm this appointment.`;
               </div>
 
               <p className="text-gray-600 italic mb-4">
-                "{review.text}"
+              &quot;{review.text}&quot;
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">
