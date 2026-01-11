@@ -5,14 +5,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // --- COMPONENTS ---
 
-const Button = ({ children, variant = 'primary', className = '', ...props }) => {
-  const baseStyle = "px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-md flex items-center gap-2";
-  const variants = {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+  variant?: string;
+  className?: string;
+}
+
+const Button = ({ children, variant = 'primary', className = '', ...props }: ButtonProps) => {
+  const baseStyle = "px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-md";
+  const variants: any = {
     primary: "bg-blue-900 text-white hover:bg-blue-800",
     secondary: "bg-white text-blue-900 border-2 border-blue-900 hover:bg-blue-50",
     outline: "bg-transparent text-white border-2 border-white hover:bg-white/20"
-  };
-
+  }; 
   return (
     <button className={`${baseStyle} ${variants[variant]} ${className}`} {...props}>
       {children}
@@ -20,31 +25,30 @@ const Button = ({ children, variant = 'primary', className = '', ...props }) => 
   );
 };
 
-const SectionHeading = ({ children, centered = true }) => (
+const SectionHeading = ({ children, centered = true }: any) => 
   <h2 className={`text-3xl md:text-4xl font-bold text-gray-800 mb-6 ${centered ? 'text-center' : ''}`}>
     {children}
     <div className={`h-1.5 w-20 bg-blue-900 mt-3 rounded-full ${centered ? 'mx-auto' : ''}`} />
   </h2>
-);
 
-const Card = ({ children, className = "" }) => (
+
+const Card = ({ children, className = "" }: any) => 
   <motion.div 
     whileHover={{ y: -5 }}
     className={`bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all ${className}`}
   >
     {children}
   </motion.div>
-);
 
 export default function VeterinaryWebsite() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [formData, setFormData] = useState({ name: '', pet: '', date: '', phone: '' });
+  const [formData, setFormData] = useState({ name: '', pet: '', date: '', phone: '',Reason: ''});
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e:any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e:any) => {
     e.preventDefault();
     
     // 1. Create the detailed message
@@ -53,7 +57,7 @@ export default function VeterinaryWebsite() {
 👤 *Owner:* ${formData.name}
 🐾 *Pet:* ${formData.pet}
 📞 *Phone:* ${formData.phone}
-📝 *Reason:* ${formData.reason}
+📝 *Reason:* ${formData.Reason}
 📅 *Date:* ${formData.date}
     
 Please confirm this appointment.`;
